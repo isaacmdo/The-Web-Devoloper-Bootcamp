@@ -1,0 +1,19 @@
+body {
+  display: flex;
+}
+div {
+  display: inline-flex;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  transform: translate(50%);
+}
+
+button {
+  padding: 1rem;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+}
+
