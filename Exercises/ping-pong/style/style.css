@@ -1,0 +1,57 @@
+body {
+  width: 100%;
+}
+
+.container {
+  width: 400px;
+  justify-content: center;
+  align-content: center;
+  transform: translateX(120%);
+  background-color: whitesmoke;
+  border-radius: 5px;
+}
+
+img {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 15px;
+  text-align: start;
+}
+
+.result {
+  display: flex;
+}
+
+.points {
+  margin-right: 5px;
+  font-size: 26px;
+}
+
+.players {
+  display: flex;
+  font-size: 14px;
+}
+
+.players h3 {
+  display: flex;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.button {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.winner {
+  color: greenyellow;
+}
+
+.loser {
+  color: red;
+}
