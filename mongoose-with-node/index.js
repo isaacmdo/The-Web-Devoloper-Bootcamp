@@ -4,7 +4,15 @@ const path = require('path');
 const methodOverride = require('method-override');
 const AppError = require('./AppError');
 const Farm = require('./model/farm.js')
-const Product = require('./model/product.js')
+const Product = require('./model/product.js');
+const flash = require('connect-flash');
+const session = require('express-session');
+
+app.use(session({
+  secret: 'thisIsASecret',
+  saveUninitialized: false,
+  resave: false
+}));
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/farmStand', {
@@ -27,6 +35,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
+app.use(flash());
 
 app.use((err, req, res, next) => {
   const { status = 500, message = 'error'} = err;
@@ -42,6 +51,11 @@ function wrapAsync(fn){
 }
 
 //Farm Routes
+
+app.use((req, res, next) => {
+  res.locals.messages = req.flash('success');
+  next();
+})
 
 app.get('/farms', async(req, res) => {
   const farms = await Farm.find({});
@@ -66,6 +80,7 @@ app.delete('/farms/:id', async(req, res) => {
 app.post('/farms', async (req, res) => {
   const farm = new Farm(req.body)
   await farm.save();
+  req.flash('success', 'Sucessfully made a new farm!');
   res.redirect('/farms')
 })
 
