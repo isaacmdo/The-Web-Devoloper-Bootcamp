@@ -27,7 +27,10 @@ const seedDb = async () =>{
       title: `${randNumberArray(descriptors)} ${randNumberArray(places)}`,
       geometry: {
         type: "Point",
-        coordinates: [125.6, 10.1]
+        coordinates: [
+          cities[rand].longitude,
+          cities[rand].latitude
+        ]
       },
       images: [
           {
